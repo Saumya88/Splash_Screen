@@ -3,10 +3,10 @@ import 'splash_screen.dart';
 import 'home_screen.dart';
 
 void main() {
-  runApp(Splash());
+  runApp(MyApp());
 }
 
-class Splash extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,8 +19,14 @@ class Splash extends StatelessWidget {
         SplashScreen.id: (context) => SplashScreen(
               backgroundColor: Colors.blueAccent,
               imagePath: 'images/diamond.png',
-              splashTime: 1,
+              imageHeight: 300,
+              imageWidth: 200,
+              splashTime: 3,
               nextScreenPath: HomeScreen.id,
+              splashText: 'By Android Studio',
+              splashTextColor: Colors.blueGrey,
+              splashTextFont: 'Piedra',
+              splashTextSize: 45,
             ),
         HomeScreen.id: (context) => HomeScreen(),
       },
