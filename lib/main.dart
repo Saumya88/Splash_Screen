@@ -16,7 +16,12 @@ class Splash extends StatelessWidget {
       ),
       initialRoute: SplashScreen.id,
       routes: {
-        SplashScreen.id: (context) => SplashScreen(),
+        SplashScreen.id: (context) => SplashScreen(
+              backgroundColor: Colors.blueAccent,
+              imagePath: 'images/diamond.png',
+              splashTime: 1,
+              nextScreenPath: HomeScreen.id,
+            ),
         HomeScreen.id: (context) => HomeScreen(),
       },
     );
