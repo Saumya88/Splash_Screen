@@ -13,7 +13,7 @@ class SplashScreen extends StatefulWidget {
   @required
   final int duration;
 
-  // Image path => Asset Image ONLY TODO: Allow user to add images from the internet using network images
+  // Image path => Asset Image ONLY
   @required
   final String imagePath;
 
@@ -39,6 +39,12 @@ class SplashScreen extends StatefulWidget {
   // Screen Text font
   final String primaryTextFont;
 
+  // Screen Text font
+  final FontWeight primaryTextWeight;
+
+  // Check if user is debugging
+  final bool debug;
+
   SplashScreen(
       {this.backgroundColor,
       this.duration,
@@ -49,7 +55,9 @@ class SplashScreen extends StatefulWidget {
       this.iconWidth,
       this.primaryTextColor,
       this.primaryTextFont,
-      this.primaryTextSize});
+      this.primaryTextSize,
+      this.primaryTextWeight,
+      this.debug});
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -57,13 +65,15 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  // void initState() {
-  //   super.initState();
-  //   new Future.delayed(
-  //     Duration(seconds: widget.duration),
-  //     () => Navigator.pushReplacementNamed(context, widget.nextScreenPath),
-  //   );
-  // }
+  void initState() {
+    super.initState();
+    if (!widget.debug) {
+      new Future.delayed(
+        Duration(seconds: widget.duration),
+        () => Navigator.pushReplacementNamed(context, widget.nextScreenPath),
+      );
+    }
+  }
 
   Widget build(BuildContext context) {
     return Container(
@@ -82,10 +92,12 @@ class _SplashScreenState extends State<SplashScreen> {
           Text(
             widget.primaryText,
             style: TextStyle(
-                decoration: TextDecoration.none,
-                color: widget.primaryTextColor,
-                fontFamily: widget.primaryTextFont,
-                fontSize: widget.primaryTextSize),
+              decoration: TextDecoration.none,
+              color: widget.primaryTextColor,
+              fontFamily: widget.primaryTextFont,
+              fontSize: widget.primaryTextSize,
+              fontWeight: widget.primaryTextWeight,
+            ),
           ),
         ],
       ),
