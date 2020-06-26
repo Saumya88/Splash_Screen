@@ -18,11 +18,11 @@ flutter:
   fonts:
     - family: Piedra
       fonts:
-        - asset: fonts/Piedra-Regular.ttf
+        - asset: assets/fonts/Piedra-Regular.ttf
 
   uses-material-design: true
 
   assets:
-    - images/
+    - assets/images/
 
 

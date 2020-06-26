@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'splash_screen.dart';
-import 'home_screen.dart';
+import 'package:splash/src/splash_screen.dart';
+import 'package:splash/src/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,16 +17,18 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(
-              backgroundColor: Colors.blueAccent,
-              imagePath: 'images/diamond.png',
-              imageHeight: 300,
-              imageWidth: 200,
-              splashTime: 3,
+              backgroundColor: const [
+                Colors.white,
+              ],
+              imagePath: 'assets/images/instagram.png',
+              iconHeight: 300,
+              iconWidth: 200,
+              duration: 1,
+              primaryText: 'Instagram',
+              primaryTextColor: Colors.black,
+              primaryTextFont: 'Roboto', 
+              primaryTextSize: 20,
               nextScreenPath: HomeScreen.id,
-              splashText: 'By Android Studio',
-              splashTextColor: Colors.blueGrey,
-              splashTextFont: 'Piedra',
-              splashTextSize: 45,
             ),
         HomeScreen.id: (context) => HomeScreen(),
       },

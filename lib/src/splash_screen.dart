@@ -1,0 +1,94 @@
+import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:splash/utilities/bgDecoration.dart';
+
+class SplashScreen extends StatefulWidget {
+  static const String id = 'splashScreen';
+
+  // Background color of the screen
+  @required
+  final List<Color> backgroundColor;
+
+  // Time for which screen will show up
+  @required
+  final int duration;
+
+  // Image path => Asset Image ONLY TODO: Allow user to add images from the internet using network images
+  @required
+  final String imagePath;
+
+  // Image Height
+  final double iconHeight;
+
+  // Image Width
+  final double iconWidth;
+
+  // Next screen it will land after the splash screen => Route name
+  @required
+  final String nextScreenPath;
+
+  // Splash screen text => Not Required
+  final String primaryText;
+
+  // Screen Text color
+  final Color primaryTextColor;
+
+  // Screen Text Size
+  final double primaryTextSize;
+
+  // Screen Text font
+  final String primaryTextFont;
+
+  SplashScreen(
+      {this.backgroundColor,
+      this.duration,
+      this.imagePath,
+      this.nextScreenPath,
+      this.primaryText,
+      this.iconHeight,
+      this.iconWidth,
+      this.primaryTextColor,
+      this.primaryTextFont,
+      this.primaryTextSize});
+
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  // void initState() {
+  //   super.initState();
+  //   new Future.delayed(
+  //     Duration(seconds: widget.duration),
+  //     () => Navigator.pushReplacementNamed(context, widget.nextScreenPath),
+  //   );
+  // }
+
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: bgBoxDecoration(widget.backgroundColor),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            widget.imagePath,
+            height: widget.iconHeight,
+            width: widget.iconWidth,
+          ),
+          Text(
+            widget.primaryText,
+            style: TextStyle(
+                decoration: TextDecoration.none,
+                color: widget.primaryTextColor,
+                fontFamily: widget.primaryTextFont,
+                fontSize: widget.primaryTextSize),
+          ),
+        ],
+      ),
+    );
+  }
+}
