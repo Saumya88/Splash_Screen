@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:splash/utilities/bgDecoration.dart';
 
-class SplashScreen extends StatefulWidget {
+class BasicSplashScreen extends StatefulWidget {
   static const String id = 'splashScreen';
 
   // Background color of the screen
@@ -45,7 +45,7 @@ class SplashScreen extends StatefulWidget {
   // Check if user is debugging
   final bool debug;
 
-  SplashScreen(
+  BasicSplashScreen(
       {this.backgroundColor,
       this.duration,
       this.imagePath,
@@ -60,18 +60,23 @@ class SplashScreen extends StatefulWidget {
       this.debug});
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _BasicSplashScreenState createState() => _BasicSplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _BasicSplashScreenState extends State<BasicSplashScreen> {
   @override
   void initState() {
     super.initState();
-    if (!widget.debug) {
+    if (!widget.debug && widget.nextScreenPath != "") {
       new Future.delayed(
         Duration(seconds: widget.duration),
         () => Navigator.pushReplacementNamed(context, widget.nextScreenPath),
       );
+    }
+
+    if (widget.nextScreenPath != "") {
+      print(
+          "You've not given Landing Screen Path. Please give the path as string as explained in doc.");
     }
   }
 
